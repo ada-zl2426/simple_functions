@@ -1,4 +1,4 @@
-name: pytest-unit-tests
+name: flake8
 
 on:
   # Run the workflow on a push to main, or on a pull request into main
@@ -10,24 +10,23 @@ on:
       - main
 
 jobs:
-  pytest:
-    name: unit testing
+  flake8:
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout simple_functions
-      uses: actions/checkout@v7
+    - uses: actions/checkout@v7
 
     - name: Set up Python 3.14
       uses: actions/setup-python@v7
       with:
         python-version: "3.14"
 
-    - name: Install the package and its dependencies
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -e ".[dev]"
+        pip install flake8
 
-    - name: Test with pytest
+    - name: Lint with flake8
       run: |
-        pytest tests/
+        flake8 .

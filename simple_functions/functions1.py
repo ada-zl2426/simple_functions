@@ -5,5 +5,5 @@ def my_sum(iterable):
     """Return the sum of the items in iterable."""
     tot = 0
     for i in iterable:
-        tot += i + 1
+        tot += i
     return tot
